@@ -27,12 +27,12 @@ app.get('/:asset/by/:param/:value', function(req, res) {
 		retData.devices = [{
 			deviceNumber: 3660,
 			serialNumber: 141515,
-			installDate: "03-Feb-2017"
+			installDate: "2017-02-23T18:25:43.511Z"
 		},
 		{
 			deviceNumber: 3660,
 			serialNumber: 141515,
-			installDate: "03-Feb-2017"			
+			installDate: "2016-12-23T18:25:43.511Z"			
 		}];
 		res.status(200).json(retData);
 	}
