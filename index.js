@@ -24,17 +24,14 @@ app.get('/:asset/by/:param/:value', function(req, res) {
 	}
 
 	if (req.params.param == 'hospitalId') {
-		retData.devices = [{
-			deviceNumber: 3660,
-			serialNumber: 141515,
-			installDate: "2017-02-23T18:25:43.511Z"
-		},
-		{
-			deviceNumber: 3660,
-			serialNumber: 141515,
-			installDate: "2016-12-23T18:25:43.511Z"			
-		}];
-		res.status(200).json(retData);
+
+		for (var i = 0; i < hospitalAssets.length; i++) {
+			if (hospitalAssets[i].hospitalId == req.params.value) {
+				retData = hospitalAssets[i];
+				//console.log(deviceSensors[i]);
+				res.status(200).json(retData);
+			}
+		}
 	}
 
 })
@@ -44,3 +41,43 @@ app.listen(3017, function() {
 })
 
 var deviceSensors = require("./deviceSensors.json");
+
+var hospitalAssets = [{
+
+	hospitalId: "test-1",
+	assets: [{
+		deviceNumber: 3660,
+		serialNumber: 141515,
+		installDate: "2017-02-23T18:25:43.511Z"
+	}, {
+		deviceNumber: 3660,
+		serialNumber: 141515,
+		installDate: "2016-12-23T18:25:43.511Z"
+	}]
+},
+{
+
+	hospitalId: "u",
+	assets: [{
+		deviceNumber: 3660,
+		serialNumber: 141515,
+		installDate: "2017-02-23T18:25:43.511Z"
+	}, {
+		deviceNumber: 3660,
+		serialNumber: 141515,
+		installDate: "2016-12-23T18:25:43.511Z"
+	}]
+},
+{
+
+	hospitalId: "test-hospital9",
+	assets: [{
+		deviceNumber: 3660,
+		serialNumber: 141515,
+		installDate: "2017-02-23T18:25:43.511Z"
+	}, {
+		deviceNumber: 3660,
+		serialNumber: 141515,
+		installDate: "2016-12-23T18:25:43.511Z"
+	}]
+}];
